@@ -1,22 +1,17 @@
+// @ts-nocheck
 "use client";
 
 import { User2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // 🦁 Créer une clé `STORAGE_KEY` qui est égale à `storage-name`
-const STORAGE_KEY = "storage-name";
 
 const NameForm = ({ initialName }) => {
   // 🦁 Comme valeur initiale, récupère la valeur dans le localStorage
-  const [name, setName] = useState(() => {
-    return localStorage.getItem(STORAGE_KEY) || initialName;
-  });
+  const [name, setName] = useState(initialName);
 
   // 🦁 Créer un `useEffect` avec `name` comme dépendance
-  useEffect(() => {
-    // 🦁 Sauvegarde le `name` dans le localStorage avec la clé définie dans `STORAGE_KEY`
-    localStorage.setItem(STORAGE_KEY, name);
-  }, [name]);
+  // 🦁 Sauvegarde le `name` dans le localStorage avec la clé définie dans `STORAGE_KEY`
 
   return (
     <div className="flex flex-col items-center justify-center">
