@@ -41,16 +41,20 @@ export default function Home() {
                 >
                   <div className="card-body flex  w-full flex-col items-center gap-2">
                     <h3 className="card-title mb-4">{moduleKey}</h3>
-                    {Object.entries(value).map(([lessonKey]) => {
-                      return (
-                        <LessonButton
-                          key={lessonKey}
-                          typeKey={typeKey}
-                          moduleKey={moduleKey}
-                          lessonKey={lessonKey}
-                        />
-                      );
-                    })}
+                    {Object.entries(value)
+                      .sort(([a], [b]) => {
+                        return parseInt(a) - parseInt(b);
+                      })
+                      .map(([lessonKey]) => {
+                        return (
+                          <LessonButton
+                            key={lessonKey}
+                            typeKey={typeKey}
+                            moduleKey={moduleKey}
+                            lessonKey={lessonKey}
+                          />
+                        );
+                      })}
                   </div>
                 </div>
               );
