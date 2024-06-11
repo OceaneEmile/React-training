@@ -62,9 +62,14 @@ export default async function Page({ params }) {
             Done
           </MarkAsDone>
 
-          <details className="dropdown dropdown-end">
-            <summary className="btn btn-outline btn-sm m-1">Solutions</summary>
-            <ul className="menu dropdown-content z-[1] w-52 rounded-box bg-base-200 p-2 shadow">
+          <div className="dropdown dropdown-end">
+            <div tabIndex={1} className="btn btn-outline btn-sm m-1">
+              Solutions
+            </div>
+            <ul
+              tabIndex={1}
+              className="menu dropdown-content z-[1] w-52 rounded-box bg-base-200 p-2 shadow"
+            >
               <li>
                 <Link
                   href={`/training/exercices/${moduleName}/${currentExercice}.jsx`}
@@ -80,7 +85,7 @@ export default async function Page({ params }) {
                 </li>
               ))}
             </ul>
-          </details>
+          </div>
         </header>
         <div className="rounded-md border border-dashed border-accent p-4">
           <PageComponent fullPath={fullPath} />
