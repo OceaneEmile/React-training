@@ -24,23 +24,26 @@ export default function Home() {
   const trainingTree = getTrainingTree(trainingDirectory);
   return (
     <main className="my-8 flex flex-col items-center gap-6">
+      <h3 className="text-3xl font-bold">Exercices</h3>
+
       {Object.entries(trainingTree).map(([typeKey, value]) => {
         if (value === "file") return;
         if (typeKey === "solutions") return;
         return (
           <div
             key={typeKey}
-            className="flex w-full flex-col items-center gap-4"
+            className="grid w-full max-w-xl grid-cols-1 gap-6 lg:grid-cols-2"
           >
-            <h3 className="text-3xl font-bold">{typeKey}</h3>
             {Object.entries(value).map(([moduleKey, value]) => {
               return (
                 <div
                   key={moduleKey}
-                  className="card w-full max-w-sm flex-col items-center bg-base-300 shadow-xl"
+                  className="card h-fit w-full max-w-sm flex-col items-center overflow-hidden border border-neutral-content/20 bg-base-300 p-0 shadow-xl"
                 >
+                  <div className="w-full bg-base-100 px-8 py-6">
+                    <h3 className="card-title">{moduleKey}</h3>
+                  </div>
                   <div className="card-body flex  w-full flex-col items-center gap-2">
-                    <h3 className="card-title mb-4">{moduleKey}</h3>
                     {Object.entries(value)
                       .sort(([a], [b]) => {
                         return parseInt(a) - parseInt(b);
