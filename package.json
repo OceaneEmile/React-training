@@ -22,7 +22,8 @@
     "react-dom": "19.0.0-rc-935180c7e0-20240524",
     "react-hook-form": "^7.51.5",
     "swr": "^2.2.5",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.3.0",
