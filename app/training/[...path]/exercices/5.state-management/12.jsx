@@ -45,11 +45,11 @@ const DialogContent = ({ open, setOpen, children }) => {
   );
 };
 
-// 🦁 Créer un component DialogTrigger qui prends comme props children
+// 🦁 Crée un component DialogTrigger qui prend comme props children
 // Celui-ci va contenir le bouton avec un onClick qui va mettre à jour le state `open`
 // Utilise `useDialogContext` pour récupérer le contexte `DialogContext`
 
-// 🦁 Créer un component DialogClose qui prends comme props children
+// 🦁 Crée un component DialogClose qui prend comme props children
 // Celui-ci va contenir le bouton avec un onClick qui va mettre à jour le state `open`
 // Utilise `useDialogContext` pour récupérer le contexte `DialogContext`
 
