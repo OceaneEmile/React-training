@@ -9,6 +9,9 @@ import { useState } from "react";
 // 💡 Utilise `useContext` pour récupérer le contexte `DialogContext`
 // ❌ Si le contexte renvoie null, on va renvoyer une erreur
 // ✅ Sinon on va renvoyer le contexte
+
+// Modifie Dialog pour qu'il injecte le `open, setOpen` dans notre `DialogContext.Provider`
+// https://react.dev/reference/react/createContext#provider
 const Dialog = ({ children, buttonText }) => {
   const [open, setOpen] = useState(false);
 
