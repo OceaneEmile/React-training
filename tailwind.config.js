@@ -24,6 +24,6 @@ module.exports = {
     require("daisyui"),
   ],
   daisyui: {
-    themes: ["dracula", "fantasy"],
+    themes: ["night", "emerald"],
   },
 };

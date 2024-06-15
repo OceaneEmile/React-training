@@ -10,6 +10,7 @@ export const InstructionToggle = ({ children }) => {
     <div
       className={cn("pt-2 px-4 flex flex-col overflow-auto max-lg:hidden", {
         "flex-1 border-r border-r-neutral": open,
+        "absolute left-4 top-2": !open,
       })}
       style={{
         maxHeight: "calc(100vh - 49px)",

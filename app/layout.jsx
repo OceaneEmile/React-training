@@ -22,11 +22,11 @@ export default function RootLayout({ children }) {
           inter.className,
           GeistMono.variable,
           GeistSans.variable,
-          "min-h-full flex flex-col bg-base-100"
+          "min-h-full flex flex-col bg-base-100 px-2 text-base-content gap-4"
         )}
       >
         <Header />
-        <div className="mt-0 flex-1">{children}</div>
+        <div className="flex-1">{children}</div>
       </body>
     </html>
   );
