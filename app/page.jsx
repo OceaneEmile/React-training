@@ -38,7 +38,7 @@ export default function Home() {
               return (
                 <div
                   key={moduleKey}
-                  className="card h-fit mx-auto w-full lg:max-w-sm flex-col items-center overflow-hidden border border-neutral-content/20 bg-base-300 p-0 shadow-xl"
+                  className="card mx-auto h-fit w-full flex-col items-center overflow-hidden border border-neutral-content/20 bg-base-300 p-0 shadow-xl lg:max-w-sm"
                 >
                   <div className="w-full bg-base-100 px-8 py-6">
                     <h3 className="card-title">{moduleKey}</h3>
