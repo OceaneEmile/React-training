@@ -22,8 +22,8 @@ export const SlowComponent = ({ width = 200, blackColorOnly = false }) => {
                 : `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
                     Math.random() * 255
                   )}, ${Math.floor(Math.random() * 255)})`,
-              width: "2px",
-              height: "2px",
+              width: "1.5px",
+              height: "1.5px",
               display: "inline-block",
             }}
           />
