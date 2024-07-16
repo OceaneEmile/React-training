@@ -2,16 +2,20 @@
 "use client";
 
 import { User2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-// 🦁 Créer une clé `STORAGE_KEY` qui est égale à `storage-name`
+// J'initialise la clé par une constante, qui sera utilisée comme clé pour stocker dans le localStorage
+const STORAGE_KEY = "storage-name";
 
 const NameForm = ({ initialName }) => {
-  // 🦁 Comme valeur initiale, récupère la valeur dans le localStorage
-  const [name, setName] = useState(initialName);
-
-  // 🦁 Créer un `useEffect` avec `name` comme dépendance
-  // 🦁 Sauvegarde le `name` dans le localStorage avec la clé définie dans `STORAGE_KEY`
+  // Hook usestate pour créer variable 'name' et fonction 'setName' pour la modifier
+  const [name, setName] = useState(
+    localStorage.getItem(STORAGE_KEY) || initialName // (GET pour recuperer) valeur stockée dans le localStorage ou initialName
+  );
+ // Hook useEffect pour sauvegarder le nom dans le localStorage
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, name); // SET pour stocker la valeur de name dans le localStorage
+  }, [name]); // Déclenche l'effet uniquement si la valeur de name change
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -22,7 +26,7 @@ const NameForm = ({ initialName }) => {
           className="grow"
           placeholder="Enter your name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)} // A chaque changement de valeur, on appelle setName pour mettre à jour la valeur de name
         />
       </label>
     </div>
