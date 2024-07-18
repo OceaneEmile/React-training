@@ -1,21 +1,33 @@
-// @ts-nocheck
 "use client";
 
 import { User2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-// J'initialise la clé par une constante, qui sera utilisée comme clé pour stocker dans le localStorage
-const STORAGE_KEY = "storage-name";
+const STORAGE_KEY = "storage-name-2";
+
+const getInitialLocalStorageValue = (key, initialValue) => {
+  try {
+    const value = localStorage.getItem(key);
+    return value !== null ? JSON.parse(value) : initialValue; // j'ajoute le parse
+  } catch {
+    return initialValue;
+  }
+};
+
+const useStickyState = (key, initialValue) => {
+  const [value, setValue] = useState(() =>
+    getInitialLocalStorageValue(key, initialValue)
+  );
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value)); // J'ajoute le stringify
+  }, [key, value]);
+
+  return [value, setValue];
+};
 
 const NameForm = ({ initialName }) => {
-  // Hook usestate pour créer variable 'name' et fonction 'setName' pour la modifier
-  const [name, setName] = useState(
-    localStorage.getItem(STORAGE_KEY) || initialName // (GET pour recuperer) valeur stockée dans le localStorage ou initialName
-  );
- // Hook useEffect pour sauvegarder le nom dans le localStorage
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, name); // SET pour stocker la valeur de name dans le localStorage
-  }, [name]); // Déclenche l'effet uniquement si la valeur de name change
+  const [name, setName] = useStickyState(STORAGE_KEY, initialName);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -25,8 +37,9 @@ const NameForm = ({ initialName }) => {
           type="text"
           className="grow"
           placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)} // A chaque changement de valeur, on appelle setName pour mettre à jour la valeur de name
+          value={name.name}
+          // onChange={(e) => setName(e.target.value)} = AVANT
+          onChange={(e) => setName({ name: e.target.value })} // Je mets le name dans un objet
         />
       </label>
     </div>
@@ -36,7 +49,7 @@ const NameForm = ({ initialName }) => {
 export default function App() {
   return (
     <div className="flex flex-col gap-8">
-      <NameForm initialName={"Jean"} />
+      <NameForm initialName={{ name: "Jean" }} />
     </div>
   );
 }
